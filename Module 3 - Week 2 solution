@@ -1,0 +1,37 @@
+1) Use tutorial in 
+https://github.com/r-lib/httr/blob/master/demo/oauth2-github.r
+
+2)
+install.packages("sqldf")
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv"
+destFile <- yourDestination
+
+download.file(fileUrl, destFile)
+acs <- read.csv(destFile)
+
+sqldf("select pwgtp1 from acs where AGEP <
+50")
+
+3)
+
+sqldf("select distinct AGEP from acs")
+
+4)
+
+fileUrl <- "http://biostat.jhsph.edu/~jleek/contact.html"
+data <- readLines(fileUrl) ## output is a vector
+
+nchar(data[10])
+nchar(data[20])
+nchar(data[30])
+nchar(data[100])
+
+5)
+
+fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fwksst8110.for"
+destFile <- yourDestFile
+
+download.file(fileUrl, destFile)
+
+data <- read.fwf(destFile, c(1, 9, 5, 4, 1, 3, 5, 4, 1, 3, 5, 4, 1, 3, 5, 4, 1, 3), skip = 4)
+sum(data$V8)
